@@ -15,7 +15,8 @@ class BanksSearch extends Component {
       noResultsFound: false,
       loading: false,
       filteredData: [],
-      noFilterResult: false
+      noFilterResult: false,
+      inMemoryCache: {}
     };
   }
 
@@ -28,6 +29,19 @@ class BanksSearch extends Component {
       loading: true
     });
 
+    const inMemoryResponse = this.state.inMemoryCache[this.state.cityName];
+
+    if (inMemoryResponse) {
+      this.setState({
+        bankData: inMemoryResponse.data,
+        noResultsFound: false,
+        loading: false,
+        filteredData: [],
+        noFilterResult: false
+      });
+      return;
+    }
+
     axios
       .get(
         `https://vast-shore-74260.herokuapp.com/banks?city=${
@@ -36,12 +50,16 @@ class BanksSearch extends Component {
       )
       .then(response => {
         if (response.status === 200 && response.data.length > 0) {
+          const inMemoryCache = {...this.state.inMemoryCache};
+          inMemoryCache[this.state.cityName] = response;
+
           this.setState({
             bankData: response.data,
             noResultsFound: false,
             loading: false,
             filteredData: [],
-            noFilterResult: false
+            noFilterResult: false,
+            inMemoryCache: inMemoryCache
           });
         } else {
           this.setState({
@@ -71,11 +89,18 @@ class BanksSearch extends Component {
   };
 
   changeHandler = e => {
-    this.setState({
-      searchQuery: e.target.value,
-      filteredData: [],
-      noFilterResult: false
-    });
+    if (e.target.value === "") {
+      this.setState({
+        searchQuery: e.target.value,
+        noFilterResult: false,
+        filteredData: []
+      });
+    } else {
+      this.setState({
+        searchQuery: e.target.value,
+        noFilterResult: false
+      });
+    }
   };
 
   toLowerCase(q) {
@@ -87,11 +112,10 @@ class BanksSearch extends Component {
 
   keyPressHandler = e => {
     if (e.key === "Enter") {
-      if (this.state.searchQuery.trim() !== "") {
+      const q = this.state.searchQuery.trim();
+      if (q !== "") {
         const data = [...this.state.bankData];
-
         const filteredData = data.filter(bank => {
-          const q = this.state.searchQuery;
           const name =
             this.toLowerCase(bank.bank_name).indexOf(q.toLocaleLowerCase()) >=
             0;
@@ -158,7 +182,7 @@ class BanksSearch extends Component {
         </header>
 
         {this.state.noFilterResult && (
-          <h4>No results for search query. Showing all the results.</h4>
+          <h4 className={styles.noResults}>No results for search query "{this.state.searchQuery.trim()}". Showing all the results.</h4>
         )}
 
         {this.state.loading && (
@@ -175,7 +199,7 @@ class BanksSearch extends Component {
         />
 
         {this.state.noResultsFound && (
-          <div>No results found for city: {this.state.cityName}</div>
+          <div className={styles.noResults}>No results found for city: {this.state.cityName}</div>
         )}
         <SearchBar />
       </div>

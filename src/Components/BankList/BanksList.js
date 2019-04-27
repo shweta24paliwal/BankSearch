@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styles from "./banksList.module.css";
+import Pagination from "../Pagination/Pagination";
 
 class BanksList extends Component {
   constructor(props) {
@@ -46,6 +47,14 @@ class BanksList extends Component {
     });
   };
 
+  setPageNumber = (i) => {
+    this.setState({
+      pageNumber: i
+    }, () => {
+      window.scrollTo(0,0);
+    });
+  };
+
   render() {
     const data = this.props.data;
     const filteredData = this.props.filteredData;
@@ -61,11 +70,9 @@ class BanksList extends Component {
     }
 
     const totalResults = bankList.length;
-    const showLoadMore =
-      this.state.count * this.state.pageNumber < totalResults;
 
     const tableBodyList = bankList
-      .slice(0, this.state.count * this.state.pageNumber)
+      .slice((this.state.count * (this.state.pageNumber -1)), (this.state.count * this.state.pageNumber))
       .map((bank, index) => {
         return (
           <tr key={index}>
@@ -86,7 +93,7 @@ class BanksList extends Component {
           Total Results: <b>{totalResults}</b>
         </div>
         <div className={styles.changeCountCtn}>
-          <b>Change result count:</b>
+          <b>Change page result count:</b>
           <input
             className={styles.count}
             type="number"
@@ -114,11 +121,12 @@ class BanksList extends Component {
           </thead>
           <tbody>{tableBodyList}</tbody>
         </table>
-        {showLoadMore && (
-          <button className={styles.loadMore} onClick={this.paginationHandler}>
-            Load More
-          </button>
-        )}
+        <Pagination
+          currentIndex={this.state.pageNumber}
+          setPageNumber={this.setPageNumber}
+          totalProducts={totalResults}
+          count={this.state.count}
+        />
       </div>
     );
   }

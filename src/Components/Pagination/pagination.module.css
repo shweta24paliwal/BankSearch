@@ -1,0 +1,75 @@
+.container {
+  list-style: none;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 20px;
+  color: #282c3f;
+}
+
+.paginationMeta {
+  color: #535766;
+  font-size: 14px;
+  float: left;
+  margin-top: 18px;
+  margin-right: 10px;
+  cursor: default;
+  font-weight: 400;
+}
+
+.listItem {
+  display: inline-block;
+  margin-right: 9px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 2px;
+}
+
+.disabled {
+  pointer-events: none !important;
+  opacity: .6;
+  cursor: none !important;
+}
+
+.number {
+  background-color: #fff;
+  border: 1px solid transparent;
+}
+
+.dots {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.active {
+  font-weight: 500;
+  color: #fff;
+  border-radius: 2px;
+  background-color: #f09c67;
+}
+
+.prev {
+  text-align: center;
+  margin-right: 64px;
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 16px;
+  border: 1px solid #4c8492;
+  color: #fff;
+  background: #4c8492;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.next {
+  text-align: center;
+  margin-left: 64px;
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 16px;
+  border: 1px solid #4c8492;
+  color: #fff;
+  background: #4c8492;
+  border-radius: 4px;
+  cursor: pointer;
+}

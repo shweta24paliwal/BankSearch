@@ -1,5 +1,5 @@
 .heading {
-  margin-top: 50px;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .changeCountCtn {
-  margin: 20px 0px;
+  margin: 10px 0px 15px 0px;
 }
 
 .count {
@@ -34,9 +34,9 @@
   padding: 5px 10px;
   font-weight: bold;
   font-size: 16px;
-  border: 1px solid #5c80bc;
+  border: 1px solid #4c8492;
   color: #fff;
-  background: #5c80bc;
+  background: #4c8492;
   border-radius: 4px;
   cursor: pointer;
 }
