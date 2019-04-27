@@ -1,0 +1,42 @@
+.heading {
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
+.loadMore {
+  outline: none;
+  border: 1px solid #ccc;
+  background: darkslateblue;
+  padding: 10px 50px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  display: block;
+  margin: 20px auto;
+}
+
+.changeCountCtn {
+  margin: 20px 0px;
+}
+
+.count {
+  font-weight: bold;
+  color: #4d5061;
+  padding: 5px 10px;
+  width: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.countSubmit {
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 16px;
+  border: 1px solid #5c80bc;
+  color: #fff;
+  background: #5c80bc;
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -1,0 +1,73 @@
+@import-normalize;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  border: 1px solid #dee2e6;
+}
+
+thead {
+  font-size: 18px;
+}
+
+tbody {
+  font-size: 14px;
+}
+
+thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+  border-bottom-width: 2px;
+  border: 1px solid #dee2e6;
+}
+
+td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border: 1px solid #dee2e6;
+}
+
+.loadingContainer {
+  text-align: center;
+  margin: 100px auto;
+}
+
+.loadingAnimation {
+  margin: 10px auto;
+  width: 100px;
+  text-align: center;
+}
+
+@keyframes circle-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.circle {
+  display: block;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #7983ff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: circle-spin 1.2s linear infinite;
+}

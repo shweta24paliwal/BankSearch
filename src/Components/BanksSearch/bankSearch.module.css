@@ -1,0 +1,29 @@
+.mainContainer {
+  width: 980px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 200px;
+}
+
+.heading {
+  text-align: center;
+  font-size: 24px;
+}
+
+.selectCity {
+  font-size: 16px;
+  width: 149px;
+  margin-right: 10px;
+}
+
+.searchQuery {
+  flex-grow: 1;
+  font-size: 14px;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  padding: 10px;
+}
